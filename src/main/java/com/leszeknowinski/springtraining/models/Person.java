@@ -57,35 +57,14 @@ public class Person {
         this.email = email;
     }
 
-    public static class Builder{
-        private String name;
-        private String surname;
-        private int age;
-        private String number;
-        private String email;
-
-        public Builder(String name){
-            this.name = name;
-        }
-
-        public Builder surname(String surname){
-            this.surname = surname;
-            return this;
-        }
-
-        public Builder age(int age){
-            this.age = age;
-            return this;
-        }
-
-        public Builder number(String number){
-            this.number = number;
-            return this;
-        }
-
-        public Builder email(String email){
-            this.email = email;
-            return this;
-        }
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
+                ", number='" + number + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

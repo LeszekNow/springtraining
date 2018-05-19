@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <h1><p th:text="#{welcome}"></p></h1>
+    <form action="#" th:action = "@{/newform}" th:object="${personObject}" method="post">
+        <p>Name:<input type="text" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> Name error ex.</span>
+        </p>
+        <p>Surname:<input type="text" th:field="*{surname}">
+            <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"> Surname error ex.</span>
+        </p>
+        <p>Age:<input type="number" th:field="*{age}">
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"> Age error ex.</span>
+        </p>
+        <p>Number:<input type="text" th:field="*{number}">
+            <span th:if="${#fields.hasErrors('number')}" th:errors="*{number}"> Number error ex.</span>
+        </p>
+        <p>E-mail:<input type="text" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> E-mail error ex.</span>
+        </p>
+        <p><button type="submit">Send</button></p>
+    </form>
+</center>
+
+</body>
+</html>
