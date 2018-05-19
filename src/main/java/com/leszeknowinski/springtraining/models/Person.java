@@ -1,6 +1,15 @@
 package com.leszeknowinski.springtraining.models;
 
+import com.leszeknowinski.springtraining.models.forms.PersonForm;
+
+import javax.persistence.*;
+
+@Entity
 public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    //@Column(name = "nameOfColumnFromDB") - jeśli zaprojektoeana dla nas baza danych nie jest dostosowana do naszych nazw w klasie
     private String name;
     private String surname;
     private int age;
@@ -16,6 +25,22 @@ public class Person {
     }
 
     public Person(){}
+
+    public Person(PersonForm personForm){
+        name = personForm.getName();
+        surname = personForm.getSurname();
+        age = personForm.getAge();
+        number = personForm.getNumber();
+        email = personForm.getEmail();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

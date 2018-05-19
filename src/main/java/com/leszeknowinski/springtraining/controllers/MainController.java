@@ -1,6 +1,8 @@
 package com.leszeknowinski.springtraining.controllers;
 
+import com.leszeknowinski.springtraining.PersonRepository;
 import com.leszeknowinski.springtraining.models.Contact;
+import com.leszeknowinski.springtraining.models.Person;
 import com.leszeknowinski.springtraining.models.forms.PersonForm;
 import com.leszeknowinski.springtraining.models.SimpleBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ import java.time.LocalDateTime;
 
 @Controller
 public class MainController {
+
+    @Autowired
+    PersonRepository personRepository;
 
     @Autowired
     SimpleBean simpleBean;
@@ -46,10 +51,13 @@ public class MainController {
     }
 
     @RequestMapping(value = "/newform", method = RequestMethod.POST)
-    public String newformPost(@ModelAttribute("personObject") @Valid PersonForm person, BindingResult result){
+    public String newformPost(@ModelAttribute("personObject") @Valid PersonForm personForm, BindingResult result){
        if(result.hasErrors()){
            return "form";
        }
+        Person personObject = new Person(personForm);
+        personRepository.save(personObject);
+
        return "result";
 
        // return "New class: " + person.getName();
