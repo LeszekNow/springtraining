@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AkademiaKodu</title>
+</head>
+<body>
+<center>
+    <h1> Hello World I'm brand new template! </h1>
+    <p th:text="${someString == 'a'} ? 'Its beer time!' : 'I have to learn!' "></p>
+
+    <form action="#" th:action="@{/data}" method="post">
+        <p>Name:<input type="text" th:name="name"/>
+        <p>Surname:<input type="text" th:name="surname"/>
+        <p>Age:<input type="number" th:name="age"/>
+        <p><input type="submit" value="Send"/>
+
+    </form>
+
+</center>
+</body>
+</html>
